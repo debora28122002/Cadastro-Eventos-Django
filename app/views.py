@@ -1,18 +1,21 @@
+from datetime import datetime, timedelta
 from django.shortcuts import render, HttpResponse, redirect
 from app.models import Evento
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.http.response import Http404, JsonResponse
 
 def hello(request, nome):
     return HttpResponse('<h1>Hello {}</h1>'.format(nome))
 
 @login_required(login_url='/login/')
 def lista_eventos(request):
-    eventos = Evento.objects.all()
-    response = {'eventos': eventos}
-    usuario = request.user
-    evento = Evento.objects.filter(usuario=usuario)
+    usuario = request.user 
+    data_atual = datetime.now()
+    evento = Evento.objects.filter(usuario=usuario,
+                                   data_evento__gt=data_atual)
+    response = {'eventos': evento}
     return render(request, 'agenda.html', response)
 
 def login_user(request):
@@ -72,7 +75,19 @@ def submit_evento(request):
 @login_required(login_url='/login/')
 def delete_evento(request, id_evento):
     usuario = request.user
-    evento = Evento.objects.get(id=id_evento)
+    try:
+        evento = Evento.objects.get(id=id_evento)
+    except Exception:
+        raise Http404()
     if usuario == evento.usuario:
         evento.delete()
     return redirect('/')
+
+@login_required(login_url='/login/')
+def eventos_passados(request):
+    usuario = request.user 
+    data_atual = datetime.now()
+    evento = Evento.objects.filter(usuario=usuario,
+                                   data_evento__lt=data_atual)
+    response = {'eventos': evento}
+    return render(request, 'eventos_passados.html', response)
