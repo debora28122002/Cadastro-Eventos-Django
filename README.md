@@ -53,7 +53,20 @@ python manage.py runserver
 - Cadastro de eventos com informações detalhadas, incluindo título, data do evento, descrição, data de criação do evento e local.
 - Visualização dos eventos cadastrados.
 - Edição e exclusão de eventos existentes.
+  
+## Rotas
 
+Esta aplicação utiliza as seguintes rotas definidas no arquivo `projeto_django/urls.py`:
+
+  - `/`:
+  - `login/`:
+  - `login/submit`:
+  - `logout/`:
+  - `agenda/evento/`:
+  - `agenda/evento/submit`:
+  - `agenda/evento/delete/<int:id_evento>`:
+  - `agenda/eventos_passados/`:
+  
 ## Contribuição
 
 Contribuições são bem-vindas! Se você deseja contribuir para este projeto, siga as etapas abaixo:
@@ -76,4 +89,4 @@ git push origin minha-branch
 
 ## Contato
 
-Se tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato comigo pelo email dbrdejesus15@gmail.com.
+Se tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato comigo pelo e-mail dbrdejesus15@gmail.com.
