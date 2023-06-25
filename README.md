@@ -13,7 +13,7 @@ Certifique-se de ter os seguintes requisitos instalados:
 
 1. Clone este repositório em sua máquina local:
 ```
-git clone https://github.com/debora28122002/primeiro_projeto_django.git
+git clone https://github.com/debora28122002/Cadastro-Eventos-Django.git
 ```
 
 2. Navegue até o diretório do projeto:
