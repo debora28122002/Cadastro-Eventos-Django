@@ -58,14 +58,14 @@ python manage.py runserver
 
 Esta aplicação utiliza as seguintes rotas definidas no arquivo `projeto_django/urls.py`:
 
-  - `/`:
-  - `login/`:
-  - `login/submit`:
-  - `logout/`:
-  - `agenda/evento/`:
-  - `agenda/evento/submit`:
-  - `agenda/evento/delete/<int:id_evento>`:
-  - `agenda/eventos_passados/`:
+  - `/`: Lista dos Eventos Cadastrados.
+  - `login/`: Rota que redireciona para o template 'login.html'.
+  - `login/submit`: Validação do login.
+  - `logout/`: Rota para saída da plataforma.
+  - `agenda/evento/`: Exibe as informações (título, data, descrição e local) do evento selecionado ou cria um novo evento.
+  - `agenda/evento/submit`: Rota para edição ou criação de um novo evento no banco de dados.
+  - `agenda/evento/delete/<int:id_evento>`: Exclusão de um evento.
+  - `agenda/eventos_passados/`: Rota que verifica se um evento já ocorreu.
   
 ## Contribuição
 
